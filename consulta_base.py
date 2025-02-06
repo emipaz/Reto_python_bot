@@ -14,7 +14,7 @@ def busqueda_semantica(pregunta, k=5):
     res = ""
     fragmentos = BASE.max_marginal_relevance_search(pregunta, k=5)
     for doc in fragmentos:
-        res += f"Fuente : {doc.metadata["source"]}\n" 
+        res += f"Fuente : {doc.metadata['source']}\n" 
         res += doc.page_content + "\n\n"
     return res
 
