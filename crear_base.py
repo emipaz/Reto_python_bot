@@ -13,7 +13,7 @@ for documento in os.listdir("data"):
     elif str.endswith(path, ".pdf"):
         documentos = PyPDFLoader(path).load()
     elif str.endswith(path, ".csv"):
-        documentos = CSVLoader(path).load()
+        documentos = CSVLoader(path, encoding="utf-8").load()
     else:
         continue
     # print(type(documentos))
@@ -26,8 +26,8 @@ for doc in docs:
     print(doc.metadata)
     
 # Fragmentar los archivos que sean necesarios en fragmento mas aptos para la busqueda semantica
-
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+# from langchain_text_splitters import RecursiveCharacterTextSplitter
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size = 1000,
     chunk_overlap = 150
